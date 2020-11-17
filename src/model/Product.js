@@ -4,9 +4,6 @@ var Sequelize = require('sequelize');
 //importando connection 
 var sequelize = require('./mysql');
 
-//import model
-var Role = require('./Role');
-
 var Employee = sequelize.define('employee', {
     id: {
         type: Sequelize.INTEGER,
@@ -14,22 +11,10 @@ var Employee = sequelize.define('employee', {
         autoIncrement: true,
     },
     name: Sequelize.STRING,
-    email: Sequelize.STRING,
-    address: Sequelize.STRING,
-    phone: Sequelize.BIGINT,
-    roleId: {
-        type: Sequelize.INTEGER,
-        //É uma referencia a outro model
-        references: {
-            model: Role,
-            key: 'id'
-        }
-    }
-
+    descricao: Sequelize.STRING,
+    valor: Sequelize.DOUBLE,
 }, {
     timestamps: false,
 });
-
-Employee.belongsTo(Role)
 
 module.exports = Employee

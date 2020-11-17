@@ -1,10 +1,9 @@
 var Sequelize = require('sequelize');
 
 const sequelize = new Sequelize(
-    'node',
-    'admin',
-    'password',
-    {
+    'appPS',
+    'root',
+    'Fernandolaurin1@', {
         host: 'localhost',
         dialect: 'mysql'
     }

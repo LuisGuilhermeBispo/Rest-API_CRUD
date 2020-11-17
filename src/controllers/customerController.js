@@ -1,6 +1,6 @@
-const controller = {}
+const controllers = {}
 
-controller.test = (req, res) => {
+controllers.test = (req, res) => {
     const data = {
         name: "Luis Bispo",
         age: 21,
@@ -11,4 +11,4 @@ controller.test = (req, res) => {
     res.json(data);
 };
 
-module.exports = controller;
+module.exports = controllers;

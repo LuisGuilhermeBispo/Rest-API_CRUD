@@ -1,10 +1,9 @@
 var Sequelize = require('sequelize');
-var sequelize = require('./database');
+var sequelize = require('./mysql.js');
 
 var Role = sequelize.define('role', {
     role: Sequelize.STRING
-},
-{
+}, {
     timestamps: false,
 });
 
