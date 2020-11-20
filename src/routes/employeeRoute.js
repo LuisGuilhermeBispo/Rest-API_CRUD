@@ -4,15 +4,11 @@ const router = express.Router();
 //importando o controller
 const employeeController = require('../controllers/EmployeeController');
 const Employee = require('../model/Employee');
-// router.get('/test', employeeController.test);
-router.get('/testdata', employeeController.testdata);
 
-router.get('/list', employeeController.list);
+router.post('/createEmployee', employeeController.createEmployee);
 
-router.get('/waka', (req, res) => {
-    res.json({
-        Status: 'Employeed Saved'
-    });
-});
+router.get('/listEmployee', employeeController.listEmployee);
+
+router.put('/updateEmployee', employeeController.updateEmployee);
 
 module.exports = router;

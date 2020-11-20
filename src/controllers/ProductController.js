@@ -4,12 +4,12 @@ var sequelize = require('../model/mysql')
 const controllers = {}
 
 
-controllers.list = async(req, res) => {
+controllers.listAllProduct = async(req, res) => {
     const data = await Product.findAll();
     res.json(data)
 }
 
-controllers.addProduct = async(req, res) => {
+controllers.createProduct = async(req, res) => {
     const { name, descricao, valor } = req.body;
     // create
     const data = await Product.create({
@@ -60,5 +60,15 @@ Product.create({
     descricao: 'Costela de executivo',
     valor: 17.50
 });
+
+
+controllers.deleteProduct = async(req, res) => {
+    const { id } = req.params;
+    const data = await Product.destroy({
+        where: {
+            id: id
+        }
+    })
+}
 
 module.exports = controllers
