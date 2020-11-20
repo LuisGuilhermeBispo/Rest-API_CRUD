@@ -8,10 +8,10 @@ app.use(function(req, res, next) {
 });
 
 //Importando Rota
-const employeeRouters = require('./routes/employeeRoute')
-const qrCodeRouters = require('./routes/qrCodeRoute')
-const tableRouters = require('./routes/tableRoute')
-const productRouters = require('./routes/productRoute')
+const employeeRouters = require('./src/routes/employeeRoute')
+const qrCodeRouters = require('./src/routes/qrCodeRoute')
+const tableRouters = require('./src/routes/tableRoute')
+const productRouters = require('./src/routes/productRoute')
 
 //Rota
 app.use('/employee', employeeRouters)
