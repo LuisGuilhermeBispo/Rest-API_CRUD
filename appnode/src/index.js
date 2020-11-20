@@ -4,11 +4,22 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import hello from './hello';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+ // <React.StrictMode>
+ //   <App />
+//  </React.StrictMode>,
+
+<BrowserRouter>
+  <Switch>
+      <Route exact path='/' component={App}/>
+      <Route exact path='/hello' component={hello}/>
+  </Switch>
+</BrowserRouter>,
+
   document.getElementById('root')
 );
 
