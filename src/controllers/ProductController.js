@@ -9,6 +9,19 @@ controllers.listAllProduct = async(req, res) => {
     res.json(data)
 }
 
+controllers.findProduct = async(req, res) => {
+    const { id } = req.body
+    const data = await Product.find({
+        where: { id: id }
+    }).then(data => {
+        return data
+    })
+    res.status(200).json({
+        success: true,
+        data: data
+    });
+}
+
 controllers.createProduct = async(req, res) => {
     const { name, descricao, valor } = req.body;
     // create

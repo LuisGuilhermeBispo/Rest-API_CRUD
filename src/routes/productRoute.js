@@ -3,13 +3,13 @@ const router = express.Router();
 
 //importando o controller
 const productController = require('../controllers/ProductController');
-const Employee = require('../model/Product');
-// router.get('/test', employeeController.test);
-router.post('/createProduct', employeeController.createProduct);
 
-router.get('/listProduct', employeeController.listProduct);
+router.post('/createProduct', productController.createProduct);
 
-router.put('/updateProduct', employeeController.updateProduct);
+router.get('/listAllProduct', productController.listAllProduct);
+router.get('/findProduct', productController.listAllProduct);
+
+router.put('/updateProduct', productController.updateProduct);
 
 
 module.exports = router;

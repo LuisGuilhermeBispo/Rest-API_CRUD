@@ -4,17 +4,16 @@ var Sequelize = require('sequelize');
 //importando connection 
 var sequelize = require('./mysql');
 
-var Product = sequelize.define('products', {
+var Table = sequelize.define('tables', {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
     },
     name: Sequelize.STRING,
-    descricao: Sequelize.STRING,
-    valor: Sequelize.DOUBLE,
+    qrCode: Sequelize.STRING,
 }, {
     timestamps: false,
 });
 
-module.exports = Product
+module.exports = Table

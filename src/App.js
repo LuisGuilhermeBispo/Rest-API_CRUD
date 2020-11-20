@@ -9,9 +9,16 @@ app.use(function(req, res, next) {
 
 //Importando Rota
 const employeeRouters = require('./routes/employeeRoute')
+const qrCodeRouters = require('./routes/qrCodeRoute')
+const tableRouters = require('./routes/tableRoute')
+const productRouters = require('./routes/productRoute')
 
 //Rota
 app.use('/employee', employeeRouters)
+app.use('/product', productRouters)
+app.use('/qrcode', qrCodeRouters)
+app.use('/table', tableRouters)
+    // app.use('/employee', employeeRouters)
 
 //Config
 
