@@ -1,6 +1,6 @@
 var sequelize = require('../model/mysql')
 var Table = require('../model/Table')
-
+var qrCodeController = require('./qrCodeController')
 const controllers = {}
 
 controllers.findAllTables = async(req, res) => {
@@ -28,16 +28,51 @@ controllers.findTable = async(req, res) => {
     });
 }
 
-controllers.addTable = async(req, res) => {
-    const { name, qrCode } = req.body
-
+controllers.setQrCode = async(id) => {
+    console.log(id);
+    const data = await Table.update({
+            qrCode: 'http://localhost:3001/table/' + id
+        }, {
+            where: { id: id }
+        })
+        .then(data => {
+            return data
+        })
+    return data
 }
 
-// create employee
-Table.create({
-    id: 1,
-    name: 'Mesa 1',
-    qrCode: "wwwasdplasjfklasjlfa"
-});
+controllers.createTable = async(req, res) => {
+    const { name, qrCode } = req.body;
+    console.log(req.body);
+    // const qrCode = await qrCodeController.run(name);
+    console.log(qrCode);
+    const data = await Table.create({
+            name: name
+        })
+        .then(function(data) {
+            controllers.setQrCode(data.dataValues.id)
+            console.log(data.dataValues);
+            return data;
+        })
+        .catch(error => {
+            console.log("Erro " + error)
+            return error;
+        })
+    res.status(200).json({
+        success: true,
+        message: "Mesa Cadastrada",
+        data: data
+    });
+}
+
+controllers.addTable = async(req, res) => {
+    // const { name, qrCode } = req.body
+    console.log(req.body);
+}
+
+// Table.create({
+//     name: 'Mesa 1',
+//     qrCode: "wwwasdplasjfklasjlfa"
+// });
 
 module.exports = controllers

@@ -1,12 +1,15 @@
 const express = require('express');
 const router = express.Router();
 
+var bodyParser = require('body-parser')
+var jsonParser = bodyParser.json()
+
 //importando o controller
 const tableController = require('../controllers/TableController');
 
-router.get('/findAllTables', tableController.findAllTables);
+router.get('/', tableController.findAllTables);
 
-// router.post('/createTable', tableController.createTable);
+router.post('/createTable', jsonParser, tableController.createTable);
 
 router.get('/findTable/:id', tableController.findTable);
 

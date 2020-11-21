@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
-
-//importando o controller
+var bodyParser = require('body-parser')
+var jsonParser = bodyParser.json()
+    //importando o controller
 const employeeController = require('../controllers/EmployeeController');
 const Employee = require('../model/Employee');
 
-router.post('/createEmployee', employeeController.createEmployee);
+router.post('/createEmployee', jsonParser, employeeController.createEmployee);
 
 router.get('/listEmployee', employeeController.listEmployee);
 

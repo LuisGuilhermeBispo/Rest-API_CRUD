@@ -10,8 +10,8 @@ controllers.listAllProduct = async(req, res) => {
 }
 
 controllers.findProduct = async(req, res) => {
-    const { id } = req.body
-    const data = await Product.find({
+    const { id } = req.params
+    const data = await Product.findAll({
         where: { id: id }
     }).then(data => {
         return data

@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
-
-//importando o controller
+var bodyParser = require('body-parser')
+var jsonParser = bodyParser.json()
+    //importando o controller
 const qrCodeController = require('../controllers/qrCodeController');
 
 // router.get('/test', employeeController.test);
-router.get('/qrcode', qrCodeController.run);
+router.post('/generate', jsonParser, qrCodeController.generate);
 
 // router.get('/listProduct', employeeController.listProduct);
 
